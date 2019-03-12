@@ -1,38 +1,43 @@
 import React, { Component } from 'react';
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
-
-const data = [{
-    name: 'Tanner Linsley',
-    age: 26,
-    friend: {
-        name: 'Jason Maurer',
-        age: 23,
-    }
-}];
+import { connect} from "react-redux";
+import { fetchRepos } from '../../services/repositories'
 
 const columns = [{
+    Header: 'Autor',
+    accessor: 'author'
+}, {
     Header: 'Name',
-    accessor: 'name' // String-based value accessors!
+    accessor: 'name',
 }, {
-    Header: 'Age',
-    accessor: 'age',
-    Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+    Header: 'URL',
+    accessor: 'url'
 }, {
-    id: 'friendName', // Required because our accessor is not a string
-    Header: 'Friend Name',
-    accessor: d => d.friend.name // Custom value accessors!
+    Header: 'Description',
+    accessor: 'description'
 }, {
-    Header: props => <span>Friend Age</span>, // Custom header components!
-    accessor: 'friend.age'
+    Header: 'Language',
+    accessor: 'language'
+}, {
+    Header: 'Stars',
+    accessor: 'stars'
 }];
 
 class RepositoriesTable extends Component {
 
 
+    componentDidMount() {
+        this.props.fetchRepos();
+    }
+
     render() {
+
+        const { repositories } = this.props;
+        const repositoriesData = repositories.data.data;
+
         return <ReactTable
-            data={data}
+            data={repositoriesData}
             columns={columns}
             minRows={1}
             className="repoTable"
@@ -40,4 +45,13 @@ class RepositoriesTable extends Component {
     }
 }
 
-export default RepositoriesTable;
+
+const mapStateToProps = (state) => {
+    return {
+        repositories: state.repositories
+    }
+};
+export default connect(
+    mapStateToProps,
+    { fetchRepos }
+)(RepositoriesTable);

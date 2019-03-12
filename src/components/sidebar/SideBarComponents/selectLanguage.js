@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { fetchRepos } from '../../../services/repositories'
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import { compose } from 'redux'
+import { connect} from "react-redux";
 
 const styles = theme => ({
-    container: {
+    root: {
         display: 'flex',
         flexWrap: 'wrap',
     },
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
+    formControl: {
+        margin: theme.spacing.unit,
+        minWidth: 120,
     },
-    dense: {
-        marginTop: 16,
-    },
-    menu: {
-        width: 200,
+    selectEmpty: {
+        marginTop: theme.spacing.unit * 2,
     },
 });
 
@@ -26,15 +27,21 @@ class SelectLanguage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            queryValue: ''
+            language: 'javascript'
         };
+    }
+
+    componentDidMount() {
+        const { language } = this.state;
+        this.props.fetchRepos(language)
     }
 
     handleChange = event => {
         this.setState({
-            queryValue: event.target.value,
+            language: event.target.value,
         });
-        console.log(this.state.queryValue);
+        const { language } = this.state;
+        this.props.fetchRepos(language);
     };
 
     render(){
@@ -42,15 +49,21 @@ class SelectLanguage extends Component {
 
         return (
             <div className="selectLanguage">
-                <form className={classes.container} noValidate autoComplete="off">
-                    <TextField
-                    id="outlined-dense"
-                    label="Select language"
-                    onChange={this.handleChange}
-                    className={classNames(classes.textField, classes.dense)}
-                    margin="dense"
-                    variant="outlined"
-                     />
+                <form className={classes.root} autoComplete="off">
+                    <FormControl className={classes.formControl}>
+                        <Select
+                            value={this.state.language}
+                            onChange={this.handleChange}
+                            displayEmpty
+                            name="language"
+                            className={classes.selectEmpty}
+                        >
+                            <MenuItem value="javascript">Javascript</MenuItem>
+                            <MenuItem value='java'>Java</MenuItem>
+                            <MenuItem value='python'>Python</MenuItem>
+                        </Select>
+                        <FormHelperText>Select Language</FormHelperText>
+                    </FormControl>
                 </form>
             </div>
         )
@@ -61,4 +74,14 @@ SelectLanguage.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SelectLanguage);
+const mapStateToProps = (state) => {
+    return {
+        repositories: state.repositories
+    }
+};
+
+export default compose(
+    withStyles(styles),
+    connect(mapStateToProps,
+        { fetchRepos })
+)(SelectLanguage);
