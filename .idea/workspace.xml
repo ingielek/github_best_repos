@@ -2,15 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a00e933a-fa50-4af7-90cb-523cee6f3a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/sidebar/SideBarComponents/SidebarLogo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sidebar/SideBarComponents/selectLanguage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sidebar/SideBarComponents/selectLanguage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebar/SideBarComponents/selectLanguage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sidebar/SideBarComponents/selectPeriod.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebar/SideBarComponents/selectPeriod.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tableComponent/repositoriesTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tableComponent/repositoriesTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/repositories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/repositories.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/repositories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/repositories.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -36,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/services/repositories.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="421">
+              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -57,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/store/repositories.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="92">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -106,8 +97,8 @@
         <option value="$PROJECT_DIR$/src/components/sidebar/SideBarComponents/selectLanguage.js" />
         <option value="$PROJECT_DIR$/src/components/sidebar/SideBarComponents/selectPeriod.js" />
         <option value="$PROJECT_DIR$/src/components/tableComponent/repositoriesTable.js" />
-        <option value="$PROJECT_DIR$/src/store/repositories.js" />
         <option value="$PROJECT_DIR$/src/services/repositories.js" />
+        <option value="$PROJECT_DIR$/src/store/repositories.js" />
       </list>
     </option>
   </component>
@@ -245,12 +236,12 @@
       <updated>1552055264725</updated>
       <workItem from="1552055266818" duration="885000" />
       <workItem from="1552056182593" duration="9399000" />
-      <workItem from="1552412840193" duration="10742000" />
+      <workItem from="1552412840193" duration="11024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21026000" />
+    <option name="totallyTimeSpent" value="21308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="972" extended-state="6" />
@@ -375,13 +366,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/repositories.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -391,11 +375,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/services/repositories.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="421">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/repositories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>

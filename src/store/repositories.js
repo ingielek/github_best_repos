@@ -1,8 +1,7 @@
 export const types = {
     GET_SELECTED_LANGUAGE: 'GET_SELECTED_LANGUAGE',
     GET_SELECTED_PERIOD: 'GET_SELECTED_PERIOD',
-    GET_REPOSITORIES_LIST: 'GET_REPOSITORIES_LIST',
-    GET_REPOSITORIES_LIST_SUCCEED: 'GET_REPOSITORIES_LIST_SUCCEED'
+    GET_REPOSITORIES_LIST: 'GET_REPOSITORIES_LIST'
 };
 
 export default function repositories (
@@ -32,11 +31,6 @@ export default function repositories (
                 status: 'loading',
                 ...state,
                 data: action.payload
-            };
-
-        case types.GET_REPOSITORIES_LIST_SUCCEED :
-            return {
-                status: 'succeed'
             };
 
         default:
