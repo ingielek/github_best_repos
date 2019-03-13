@@ -1,21 +1,27 @@
-import { types } from '../store/repositories'
+import {types} from '../store/repositories'
 import axios from 'axios';
 
-export function getSelectedPeriod(state) {
-    return {
+export const getSelectedPeriod = timePeriod => (dispatch, getState) => {
+    dispatch ({
         type: types.GET_SELECTED_PERIOD,
-        state
-    }
-}
+        payload: {timePeriod}
+    });
 
-export function getSelectedLanguage(state) {
-    return {
-        type: types.GET_SELECTED_PERIOD,
-        state
-    }
-}
+    fetchRepos(getState().repositories.language, timePeriod)
+        .then(response => dispatch(receiveRepos(response)));
+};
 
-export function receiveRepos(data) {
+export const  getSelectedLanguage = (language) => (dispatch, getState) => {
+    dispatch ({
+        type: types.GET_SELECTED_LANGUAGE,
+        payload: {language}
+    });
+
+    fetchRepos(language, getState().repositories.timePeriod)
+        .then(response => dispatch(receiveRepos(response)));
+};
+
+export function receiveRepos (data) {
     return {
         type: types.GET_REPOSITORIES_LIST,
         payload: data
@@ -23,14 +29,9 @@ export function receiveRepos(data) {
 }
 
 
-export const fetchRepos =  (language, timePeriod) => {
-    return async (dispatch) => {
-        return  await axios.get(`https://github-trending-api.now.sh/repositories?language=${language}&since=${timePeriod}`)
-            .then(response => {
-                dispatch(receiveRepos(response))
-            })
-            .catch(error => {
+export const fetchRepos = (language, timePeriod) => {
+    return axios.get (`https://github-trending-api.now.sh/repositories?language=${language}&since=${timePeriod}`)
+        .catch (error => {
             throw(error);
         });
-    }
 };

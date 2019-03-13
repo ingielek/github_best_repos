@@ -26,11 +26,6 @@ const columns = [{
 
 class RepositoriesTable extends Component {
 
-
-    componentDidMount() {
-        this.props.fetchRepos();
-    }
-
     render() {
 
         const { repositories } = this.props;
@@ -45,12 +40,12 @@ class RepositoriesTable extends Component {
     }
 }
 
-
 const mapStateToProps = (state) => {
     return {
         repositories: state.repositories
     }
 };
+
 export default connect(
     mapStateToProps,
     { fetchRepos }

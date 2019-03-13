@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { fetchRepos } from '../../../services/repositories'
+import { getSelectedPeriod } from '../../../services/repositories'
 import { withStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -23,24 +23,10 @@ const styles = theme => ({
 });
 
 class SelectPeriod extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            timePeriod: 'daily'
-        };
-    }
-
-    componentDidMount() {
-        const { timePeriod } = this.state;
-        this.props.fetchRepos(timePeriod)
-    }
 
     handleChange = (event) => {
-        this.setState({
-            timePeriod: event.target.value
-        });
-        const { timePeriod } = this.state;
-        this.props.fetchRepos(timePeriod);
+        const timePeriod = event.target.value;
+        this.props.getSelectedPeriod(timePeriod);
     };
 
     render() {
@@ -53,7 +39,7 @@ class SelectPeriod extends Component {
                         aria-label="TimePeriod"
                         name="timePeriod"
                         className={classes.group}
-                        value={this.state.timePeriod}
+                        value={this.props.timePeriod}
                         onChange={this.handleChange}
                     >
                         <FormControlLabel value="daily" control={<Radio color="primary" />} label="Daily" />
@@ -69,9 +55,9 @@ SelectPeriod.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ repositories }) => {
     return {
-        repositories: state.repositories
+        timePeriod: repositories.timePeriod
     }
 };
 
@@ -79,5 +65,5 @@ export default compose(
     withStyles(styles),
     connect(
         mapStateToProps,
-        {fetchRepos}
+        {getSelectedPeriod}
     ))(SelectPeriod);

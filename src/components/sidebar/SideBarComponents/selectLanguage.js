@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { fetchRepos } from '../../../services/repositories'
+import { getSelectedLanguage } from '../../../services/repositories'
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -24,24 +24,10 @@ const styles = theme => ({
 });
 
 class SelectLanguage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            language: 'javascript'
-        };
-    }
-
-    componentDidMount() {
-        const { language } = this.state;
-        this.props.fetchRepos(language)
-    }
 
     handleChange = event => {
-        this.setState({
-            language: event.target.value,
-        });
-        const { language } = this.state;
-        this.props.fetchRepos(language);
+        const language = event.target.value;
+        this.props.getSelectedLanguage(language);
     };
 
     render(){
@@ -52,7 +38,7 @@ class SelectLanguage extends Component {
                 <form className={classes.root} autoComplete="off">
                     <FormControl className={classes.formControl}>
                         <Select
-                            value={this.state.language}
+                            value={this.props.language}
                             onChange={this.handleChange}
                             displayEmpty
                             name="language"
@@ -74,14 +60,14 @@ SelectLanguage.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({repositories}) => {
     return {
-        repositories: state.repositories
+        language: repositories.language
     }
 };
 
 export default compose(
     withStyles(styles),
     connect(mapStateToProps,
-        { fetchRepos })
+        { getSelectedLanguage })
 )(SelectLanguage);
